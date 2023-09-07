@@ -25,86 +25,75 @@
             Y: <span id="y-val"></span></br>
             <button type="button" onClick="window._fns.startCalib()">start calibration</button> 
             <button type="button" onClick="window._fns.saveSettings()">save settings</button></br>
-            <input type="checkbox" id="debug-reporting-checked" onClick="window._fns.updateDbgReporting()" checked> Debug Reporting</input>
+            <button type="button" onClick="window._fns.resetSettings()">reset settings</button></br>
+            <input type="checkbox" id="debug-reporting-checked" onClick="window._fns.updateDbgReporting()" checked> Debug Reporting</input></br>
+            <span id="dbg-text"></span>
           </div>
-          <div id="settings-div" class="cal-or-std-div">
-            Notch Points</br> 
-            <div>
-              RIGHT: </br>
-              <div style="display:flex">
-              X: <input type="text" class="notch-input" onchange="window._fns.updateNotchPoint(this)" id="notch-0-x"></input> 
-              Y: <input type="text" class="notch-input" onchange="window._fns.updateNotchPoint(this)" id="notch-0-y"></input> 
+
+          <div class="cal-or-std-div">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="notchpoints-tab" data-bs-toggle="tab" data-bs-target="#notchpoints" type="button" role="tab" aria-controls="home" aria-selected="true">Notch Points</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="btnremap-tab" data-bs-toggle="tab" data-bs-target="#btnremap" type="button" role="tab" aria-controls="profile" aria-selected="false">Button Remapping</button>
+              </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+              <div class="tab-pane fade show active" id="notchpoints" role="tabpanel" aria-labelledby="notchpoints-tab">
+                <div>
+                  RIGHT: </br>
+                  <div style="display:flex">
+                  X: <input type="text" class="notch-input" onchange="window._fns.updateNotchPoint(this)" id="notch-0-x"></input> 
+                  Y: <input type="text" class="notch-input" onchange="window._fns.updateNotchPoint(this)" id="notch-0-y"></input> 
+                  </div>
+                  UPRIGHT: </br>
+                  <div style="display:flex">
+                  X: <input type="text" class="notch-input" onchange="window._fns.updateNotchPoint(this)" id="notch-1-x"></input> 
+                  Y: <input type="text" class="notch-input" onchange="window._fns.updateNotchPoint(this)" id="notch-1-y"></input> 
+                  </div>
+                  UP: </br>
+                  <div style="display:flex">
+                  X: <input type="text" class="notch-input" onchange="window._fns.updateNotchPoint(this)" id="notch-2-x"></input> 
+                  Y: <input type="text" class="notch-input" onchange="window._fns.updateNotchPoint(this)" id="notch-2-y"></input> 
+                  </div>
+                  UPLEFT: </br>
+                  <div style="display:flex">
+                  X: <input type="text" class="notch-input" onchange="window._fns.updateNotchPoint(this)" id="notch-3-x"></input> 
+                  Y: <input type="text" class="notch-input" onchange="window._fns.updateNotchPoint(this)" id="notch-3-y"></input> 
+                  </div>
+                  LEFT: </br>
+                  <div style="display:flex">
+                  X: <input type="text" class="notch-input" onchange="window._fns.updateNotchPoint(this)" id="notch-4-x"></input> 
+                  Y: <input type="text" class="notch-input" onchange="window._fns.updateNotchPoint(this)" id="notch-4-y"></input> 
+                  </div>
+                  DOWNLEFT: </br>
+                  <div style="display:flex">
+                  X: <input type="text" class="notch-input" onchange="window._fns.updateNotchPoint(this)" id="notch-5-x"></input> 
+                  Y: <input type="text" class="notch-input" onchange="window._fns.updateNotchPoint(this)" id="notch-5-y"></input> 
+                  </div>
+                  DOWN: </br>
+                  <div style="display:flex">
+                  X: <input type="text" class="notch-input" onchange="window._fns.updateNotchPoint(this)" id="notch-6-x"></input> 
+                  Y: <input type="text" class="notch-input" onchange="window._fns.updateNotchPoint(this)" id="notch-6-y"></input> 
+                  </div>
+                  DOWNRIGHT: </br>
+                  <div style="display:flex">
+                  X: <input type="text" class="notch-input" onchange="window._fns.updateNotchPoint(this)" id="notch-7-x"></input> 
+                  Y: <input type="text" class="notch-input" onchange="window._fns.updateNotchPoint(this)" id="notch-7-y"></input> 
+                  </div>
+                </div>
               </div>
-              UPRIGHT: </br>
-              <div style="display:flex">
-              X: <input type="text" class="notch-input" onchange="window._fns.updateNotchPoint(this)" id="notch-1-x"></input> 
-              Y: <input type="text" class="notch-input" onchange="window._fns.updateNotchPoint(this)" id="notch-1-y"></input> 
+              <div class="tab-pane fade" id="btnremap" role="tabpanel" aria-labelledby="btnremap-tab">
+                <select id="Comms-mode" name="Comms Mode" onchange="window._fns.setCommsMode(Number(this.value))">
+                  <option value="0">N64</option>
+                  <option value="1">Gamecube</option>
+                </select>
+                <div id="bindings-fill-in"></div>
+              <div id="bindings-div"></div>
               </div>
-              UP: </br>
-              <div style="display:flex">
-              X: <input type="text" class="notch-input" onchange="window._fns.updateNotchPoint(this)" id="notch-2-x"></input> 
-              Y: <input type="text" class="notch-input" onchange="window._fns.updateNotchPoint(this)" id="notch-2-y"></input> 
-              </div>
-              UPLEFT: </br>
-              <div style="display:flex">
-              X: <input type="text" class="notch-input" onchange="window._fns.updateNotchPoint(this)" id="notch-3-x"></input> 
-              Y: <input type="text" class="notch-input" onchange="window._fns.updateNotchPoint(this)" id="notch-3-y"></input> 
-              </div>
-              LEFT: </br>
-              <div style="display:flex">
-              X: <input type="text" class="notch-input" onchange="window._fns.updateNotchPoint(this)" id="notch-4-x"></input> 
-              Y: <input type="text" class="notch-input" onchange="window._fns.updateNotchPoint(this)" id="notch-4-y"></input> 
-              </div>
-              DOWNLEFT: </br>
-              <div style="display:flex">
-              X: <input type="text" class="notch-input" onchange="window._fns.updateNotchPoint(this)" id="notch-5-x"></input> 
-              Y: <input type="text" class="notch-input" onchange="window._fns.updateNotchPoint(this)" id="notch-5-y"></input> 
-              </div>
-              DOWN: </br>
-              <div style="display:flex">
-              X: <input type="text" class="notch-input" onchange="window._fns.updateNotchPoint(this)" id="notch-6-x"></input> 
-              Y: <input type="text" class="notch-input" onchange="window._fns.updateNotchPoint(this)" id="notch-6-y"></input> 
-              </div>
-              DOWNRIGHT: </br>
-              <div style="display:flex">
-              X: <input type="text" class="notch-input" onchange="window._fns.updateNotchPoint(this)" id="notch-7-x"></input> 
-              Y: <input type="text" class="notch-input" onchange="window._fns.updateNotchPoint(this)" id="notch-7-y"></input> 
-              </div>
-            </div>
-            
+            </div>          
           </div>
-          <select id="zl-bind" name="ZL Bind" onchange="setZLBind(this)">
-            <option value="0">DPad right</option>
-            <option value="1">DPad left</option>
-            <option value="2">DPad down</option>
-            <option value="3">DPad up</option>
-            <option value="4">Start</option>
-            <option value="5">Z</option>
-            <option value="6">B</option>
-            <option value="7">A</option>
-            <option value="8">C right</option>
-            <option value="9">C left</option>
-            <option value="10">C down</option>
-            <option value="11">C up</option>
-            <option value="12">R</option>
-            <option value="13">L</option>
-          </select>
-          <select id="zr-bind" name="ZR Bind" onchange="setZRBind(this)">
-            <option value="0">DPad right</option>
-            <option value="1">DPad left</option>
-            <option value="2">DPad down</option>
-            <option value="3">DPad up</option>
-            <option value="4">Start</option>
-            <option value="5">Z</option>
-            <option value="6">B</option>
-            <option value="7">A</option>
-            <option value="8">C right</option>
-            <option value="9">C left</option>
-            <option value="10">C down</option>
-            <option value="11">C up</option>
-            <option value="12">R</option>
-            <option value="13">L</option>
-          </select>
         </div>
 
         <div id="cal-div" class="cal-or-std-div" style="display:none">
@@ -116,7 +105,7 @@
           
         </div>
       </div>
-      <span id="dbg-text"></span>
+      
       <!-- <button type="button" onClick="download()">download report CSV</button> -->
     </div>
     <!-- Bootstrap JS -->
