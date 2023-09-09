@@ -8,8 +8,8 @@
 .dc-or-c-div {
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 200;
+    align-items: top;
+
     top: 0;
     left: 0;
   }
@@ -20,4 +20,16 @@
 
 .notch-input {
     width: 30%;
+}
+
+.save-blinker {
+  animation: blinker 2s linear infinite;
+  display:none;
+  color:red;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
 }
