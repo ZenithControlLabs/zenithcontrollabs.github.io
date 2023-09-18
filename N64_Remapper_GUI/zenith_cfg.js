@@ -5,9 +5,9 @@
 // Adjust this based on your zenith_cfg.h file!
 
 const devVID = 0x7318;
-const devPID = 0x0001;
+const devPID = 0x0002;
 const vendorName = "Zenith Control Labs";
-const productName = "Phobri64";
+const productName = "N64 Remapper";
 
 const buttonNames = [
     "A",
@@ -19,12 +19,12 @@ const buttonNames = [
     "Start",
     "L",
     "R",
-    "ZL",
+    "Z",
     "DD",
     "DL",
     "DR",
     "DU",
-    "ZR",
+    "",
     "",
     "",
     "",
